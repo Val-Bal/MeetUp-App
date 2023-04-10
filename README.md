@@ -3,6 +3,11 @@
 ## Project description
 This is a serverless, progressive web application (PWA) built with React using a test-driven development (TDD) technique. The app uses the Google Calendar API to fetch upcoming events and allows users to filter events by city, show/hide event details, specify the number of events, use the app offline, add an app shortcut to the home screen, and view a chart showing the upcoming events by city.
 
+## Use of serverless functions
+- Frontend: Written with JavaScript/React; hosted on GitHub Pages.
+- Backend (Server Logic): Written with Node/Express as Lambda functions (FaaS); hosted on AWS (requests come from frontend to Lambda function to data).
+- Backend (Database): Google Calendar API.
+
 ## Key Features and user stories
 - Filter events by city
 - Show/hide event details
