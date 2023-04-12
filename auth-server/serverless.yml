@@ -25,12 +25,12 @@ provider:
     CALENDAR_ID: ${file(config.json):CALENDAR_ID}
 
 functions:
-getAuthURL:
-    handler: handler.getAuthURL
-    events:
-      - http:
-          path: api/get-auth-url
-          method: get
+  getAuthURL:
+      handler: handler.getAuthURL
+      events:
+        - http:
+            path: api/get-auth-url
+            method: get
 
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
