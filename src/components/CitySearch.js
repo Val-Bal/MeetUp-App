@@ -13,12 +13,18 @@ const CitySearch = ({ allLocations }) => {
     setSuggestions(filteredLocations);
   };
   
+  const handleItemClicked = (event) => {
+    const value = event.target.textContent;
+    setQuery(value);
+    setShowSuggestions(false); // to hide the list
+  };
+
   return (
     <div id="city-search">
       <input
         type="text"
         className="city"
-                placeholder="Search for a city"
+        placeholder="Search for a city"
         value={query}
         onFocus={() => setShowSuggestions(true)}
         onChange={handleInputChanged}
@@ -26,16 +32,16 @@ const CitySearch = ({ allLocations }) => {
       {showSuggestions ?
         <ul className="suggestions">
           {suggestions.map((suggestion) => {
-            return <li key={suggestion}>{suggestion}</li>
+            return <li onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
           })}
-          <li key='See all cities'>
+          <li key='See all cities' onClick={handleItemClicked}>
             <b>See all cities</b>
           </li>
         </ul>
         : null
       }
     </div>
-  )
+ )
 }
 
 export default CitySearch
