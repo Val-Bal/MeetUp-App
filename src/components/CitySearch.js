@@ -11,7 +11,8 @@ const CitySearch = ({ allLocations }) => {
     }) : [];
     setQuery(value);
     setSuggestions(filteredLocations);
-
+  };
+  
   return (
     <div id="city-search">
       <input
@@ -37,5 +38,4 @@ const CitySearch = ({ allLocations }) => {
   )
 }
 
-};
 export default CitySearch
