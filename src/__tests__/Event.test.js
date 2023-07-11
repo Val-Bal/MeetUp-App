@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { mockData } from '../mock-data';
+import mockData from '../mock-data';
 import Event from "../components/Event";
 
 describe('<Event /> component', () => {
