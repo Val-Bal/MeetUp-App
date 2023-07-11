@@ -21,7 +21,7 @@ class Event extends Component {
     const { event } = this.props;
     const { collapsed } = this.state;
     return (
-      <div className="event">
+      <div className="event" role="listitem">
       <h2 className="summary">{event.summary}</h2>
       <p className="event-start">
         {new Date(event.start.dateTime).toString()}
