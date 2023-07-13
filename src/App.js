@@ -24,7 +24,7 @@ const App = () => {
     setAllLocations(extractLocations(allEvents));
   }
 
-  updateEvents = (location) => {
+  const updateEvents = (location) => {
     getEvents().then((events) => {
       const locationEvents = (location === "all") ? events : events.filter((event) => event.location === location);
       this.setState({
