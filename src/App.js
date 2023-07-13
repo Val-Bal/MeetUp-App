@@ -5,8 +5,6 @@ import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
 import './App.css';
 
-
-
 const App = () => {
   const [events, setEvents] = useState([]);
   const [currentNOE, setCurrentNOE] = useState(32);
@@ -26,10 +24,19 @@ const App = () => {
     setAllLocations(extractLocations(allEvents));
   }
 
+  updateEvents = (location) => {
+    getEvents().then((events) => {
+      const locationEvents = (location === "all") ? events : events.filter((event) => event.location === location);
+      this.setState({
+        events: locationEvents
+      });
+    });
+  }
+  
  return (
    <div className="App">
      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-     <NumberOfEvents />
+     <NumberOfEvents updateEvents={this.updateEvents} />
      <EventList events={events} />
    </div>
  );
