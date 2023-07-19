@@ -114,9 +114,25 @@ Then the user should see a chart displaying the number upcoming events in each c
 - Prettier (for code formatting)
 
 ## Project dependencies
-- Node.js version 12 or higher
-- ESLint with Airbnb ruleset
-- React version 16.13 or higher
+- "@testing-library/jest-dom": "^5.16.5",
+- "@testing-library/react": "^12.1.2",
+- "@testing-library/user-event": "^14.4.3",
+- "react": "^17.0.2",
+- "react-dom": "^17.0.2",
+- "react-scripts": "5.0.1",
+- "web-vitals": "^2.1.4",
+- "workbox-background-sync": "^6.5.4",
+- "workbox-broadcast-update": "^6.5.4",
+- "workbox-cacheable-response": "^6.5.4",
+- "workbox-core": "^6.5.4",
+- "workbox-expiration": "^6.5.4",
+- "workbox-google-analytics": "^6.5.4",
+- "workbox-navigation-preload": "^6.5.4",
+- "workbox-precaching": "^6.5.4",
+- "workbox-range-requests": "^6.5.4",
+- "workbox-routing": "^6.5.4",
+- "workbox-strategies": "^6.5.4",
+- "workbox-streams": "^6.5.4"
 
 ## API used
 - Google Calendar API
