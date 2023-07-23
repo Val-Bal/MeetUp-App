@@ -13,34 +13,38 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, [currentCity]);
+  }, [currentCity, currentNOE]);
 
   const fetchData = async () => {
     const allEvents = await getEvents();
-    const filteredEvents = currentCity === "See all cities" ?
-      allEvents :
-      allEvents.filter(event => event.location === currentCity)
+    const filteredEvents = currentCity === "See all cities"
+      ? allEvents
+      : allEvents.filter(event => event.location === currentCity);
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
   }
 
-  const updateEvents = (location) => {
+  const updateEvents = (location, number) => {
     getEvents().then((events) => {
-      const locationEvents = (location === "all") ? events : events.filter((event) => event.location === location);
-      this.setState({
-        events: locationEvents
-      });
+      const locationEvents = (location === "See all cities")
+        ? events
+        : events.filter((event) => event.location === location);
+      setEvents(locationEvents.slice(0, number));
+      setCurrentNOE(number);
     });
   }
   
  return (
    <div className="App">
+    <h1>Meet App</h1>
+    <h3>Choose your nearest city</h3>
      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-     <NumberOfEvents updateEvents={updateEvents} />
+     <NumberOfEvents updateEvents={updateEvents} currentCity={currentCity} />
      <EventList events={events} />
    </div>
  );
 }
 
 export default App;
+
     
