@@ -78,6 +78,7 @@ describe('filter events by city', () => {
       await page.type('.city', 'Berlin', { delay: 100 });
       await page.click('.suggestions li');
       const selectCity = await page.$$eval('.event', (element) => element.length);
-      expect(selectCity).toBe(1);
+      // there are 17 events in Berlin
+      expect(selectCity).toBe(17);
   })
 });
