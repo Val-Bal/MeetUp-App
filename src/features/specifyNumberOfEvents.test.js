@@ -2,6 +2,7 @@ import { loadFeature, defineFeature } from 'jest-cucumber';
 import React from 'react';
 import { mount } from 'enzyme';
 import App from '../App';
+import NumberOfEvents from '../components/NumberOfEvents';
 
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 
@@ -18,8 +19,8 @@ defineFeature(feature, test => {
 
       then(/^the user sees (\d+) events by default$/, (numberOfEvents) => {
         AppWrapper.update();
-        expect(AppWrapper.state('numberOfEvents')).toEqual(32);
-        expect(numberOfEvents).toBe('32');
+        let NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+        expect(NumberOfEventsWrapper.state("number")).toEqual(32);
       });
   });
 
@@ -30,7 +31,7 @@ defineFeature(feature, test => {
 
       when('the user has selected a number of events', () => {
         AppWrapper.update();
-        let NumberOfEventsWrapper = AppWrapper.find('NumberOfEvents');
+        let NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
         const eventNumber = { target: { value: 2 } };
         NumberOfEventsWrapper.find('.number').simulate('change', eventNumber);
         expect(NumberOfEventsWrapper.state('number')).toBe(2);
