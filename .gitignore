@@ -24,3 +24,7 @@ yarn-error.log*
 
 
 test1.json
+
+# expo files
+.expo/README.md
+.expo/settings.json
