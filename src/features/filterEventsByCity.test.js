@@ -31,7 +31,7 @@ defineFeature(feature, test => {
     let CitySearchWrapper;
     let locations = extractLocations(mockData)
     given('the main page is open', () => {
-      CitySearchWrapper = shallow(<CitySearch allLocations={locations} />);
+      CitySearchWrapper = shallow(<CitySearch allLocations={locations} setInfoAlert={() => {}} />);
     });
 
     when('user starts typing in the city textbox', () => {
