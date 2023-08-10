@@ -4,7 +4,7 @@ import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
 import './App.css';
-import { InfoAlert } from './components/Alert';
+import { InfoAlert, ErrorAlert } from './components/Alert';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -52,7 +52,7 @@ const App = () => {
       allLocations={allLocations} 
       setCurrentCity={setCurrentCity}
       setInfoAlert={setInfoAlert} />
-    <NumberOfEvents updateEvents={updateEvents} currentCity={currentCity} />
+    <NumberOfEvents updateEvents={updateEvents} currentCity={currentCity} setErrorAlert={setErrorAlert} />
     {/* <NumberOfEvents setCurrentNOE={setCurrentNOE} /> */}
     <EventList events={events} />
    </div>
