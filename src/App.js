@@ -5,6 +5,7 @@ import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
 import './App.css';
 import { InfoAlert, ErrorAlert } from './components/Alert';
+// import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -13,10 +14,20 @@ const App = () => {
   const [currentCity, setCurrentCity] = useState("See all cities");
   const [infoAlert, setInfoAlert] = useState("");
   const [errorAlert, setErrorAlert] = useState("");
+  // const [warningalert, setWarningAlert] = useState("");
 
   useEffect(() => {
     fetchData();
   }, [currentCity, currentNOE]);
+
+  // useEffect(() => {
+  //   if (navigator.onLine) {
+  //     // set the warning alert message to an empty string ""
+  //   } else {
+  //     // set the warning alert message to a non-empty string
+  //   }
+  //   fetchData();
+  // }, [currentCity, currentNOE]);
 
   const fetchData = async () => {
     const allEvents = await getEvents();
@@ -41,12 +52,13 @@ const App = () => {
    <div className="App">
     <h1>Meet App</h1>
     <h3>Choose your nearest city</h3>
-    <div className="alerts-container">
+    {/* <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert}/> : null}
-    </div>
+    </div> */}
     <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
+        {/* {warningalert.length ? <WarningAlert text={errorAlert} /> : null} */}
     </div>
     <CitySearch 
       allLocations={allLocations} 
