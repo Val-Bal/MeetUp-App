@@ -52,13 +52,10 @@ const App = () => {
    <div className="App">
     <h1>Meet App</h1>
     <h3>Choose your nearest city</h3>
-    {/* <div className="alerts-container">
-        {infoAlert.length ? <InfoAlert text={infoAlert}/> : null}
-    </div> */}
     <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
-        {/* {warningalert.length ? <WarningAlert text={errorAlert} /> : null} */}
+        {/* {warningalert.length ? <WarningAlert text={warningalert} /> : null} */}
     </div>
     <CitySearch 
       allLocations={allLocations} 
@@ -66,6 +63,8 @@ const App = () => {
       setInfoAlert={setInfoAlert} />
     <NumberOfEvents updateEvents={updateEvents} currentCity={currentCity} setErrorAlert={setErrorAlert} />
     {/* <NumberOfEvents setCurrentNOE={setCurrentNOE} /> */}
+    {/* <CityEventsChart allLocations={allLocations} events={events} /> */}
+    {/* uncomment CityEventCharts */}
     <EventList events={events} />
    </div>
  );
