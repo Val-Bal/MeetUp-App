@@ -11,8 +11,10 @@ import NProgress from 'nprogress';
  */
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
-  const tokenCheck = accessToken && (await checkToken(accessToken));
-
+  // check if app is online
+  if (navigator.onLine) {
+  const tokenCheck = accessToken &&  (await checkToken(accessToken));
+  
   if (!accessToken || tokenCheck.error) {
     await localStorage.removeItem("access_token");
     const searchParams = new URLSearchParams(window.location.search);
@@ -20,15 +22,17 @@ export const getAccessToken = async () => {
     if (!code) {
       const response = await fetch(
         "https://v3ebaw8u3g.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
-      );
-      const result = await response.json();
-      const { authUrl } = result;
-      return (window.location.href = authUrl);
+        );
+        const result = await response.json();
+        const { authUrl } = result;
+        return (window.location.href = authUrl);
+      }
+      return code && getToken(code);
     }
-    return code && getToken(code);
   }
   return accessToken;
-};
+  };
+
 
 const checkToken = async (accessToken) => {
   const response = await fetch(
