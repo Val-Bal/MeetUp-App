@@ -46,6 +46,7 @@ const checkToken = async (accessToken) => {
  *
  * This function will fetch the list of all events
  */
+
 export const getEvents = async () => {
   if (window.location.href.startsWith("http://localhost")) {
     NProgress.done();
@@ -64,15 +65,17 @@ export const getEvents = async () => {
   // (for example: const url = 'https://***************/api/get-events' + '/' + token;):
   // https://github.com/Val-Bal/MeetUp-App.git --> will be redirected to that
 
-
   if (token) {
     removeQuery();
-    const url =  "https://v3ebaw8u3g.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
+    const url = "https://v3ebaw8u3g.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
     const response = await fetch(url);
     const result = await response.json();
     if (result) {
+      localStorage.setItem("lastEvents", JSON.stringify({ events: result.events }));
       return result.events;
-    } else return null; 
+    } else {
+      return null;
+    }
   }
 };
 
