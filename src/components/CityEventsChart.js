@@ -6,18 +6,18 @@ const CityEventsChart = ({ allLocations, events }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    const getData = () => {
+      const data = allLocations.map((location) => {
+        const count = events.filter(
+          (event) => event.location === location
+        ).length;
+        const city = location.split(/, | - /)[0];
+        return { city, count };
+      });
+      return data;
+    };
     setData(getData());
-    }, [`${data}`]);
-    // }, [`${events}`]);
-
-  const getData = () => {
-    const data = allLocations.map((location) => {
-      const count = events.filter((event) => event.location === location).length
-      const city = location.split((/, | - /))[0]
-      return { city, count };
-    })
-    return data;
-  };
+  }, [allLocations, events]);
 
   return (
     <ResponsiveContainer width="99%" height={400}>
