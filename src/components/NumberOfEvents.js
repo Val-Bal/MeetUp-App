@@ -28,9 +28,8 @@ class NumberOfEvents extends Component {
     let inputValue = event.target.value;
     if (parseInt(inputValue) < 0) {
       this.props.setErrorAlert("Error");
-    }
-    else {
-    this.props.setErrorAlert("");
+    } else {
+      this.props.setErrorAlert("");
     }
     inputValue = Math.max(parseInt(inputValue), 0);
     this.setState({ number: inputValue }, () => {
