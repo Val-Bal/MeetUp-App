@@ -5,6 +5,9 @@ import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
 import './App.css';
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
+// import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import CityEventsChart from './components/CityEventsChart';
+
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -62,8 +65,9 @@ const App = () => {
       setInfoAlert={setInfoAlert} />
     <NumberOfEvents updateEvents={updateEvents} currentCity={currentCity} setErrorAlert={setErrorAlert} />
     {/* <NumberOfEvents setCurrentNOE={setCurrentNOE} /> */}
-    {/* <CityEventsChart allLocations={allLocations} events={events} /> */}
-    {/* uncomment CityEventCharts */}
+    <div className="charts-container">
+        <CityEventsChart allLocations={allLocations} events={events} /> 
+    </div>
     <EventList events={events} />
    </div>
  );
